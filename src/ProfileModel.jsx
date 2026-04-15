@@ -6,7 +6,8 @@ const ProfileModel = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await fetch(`http://localhost:4502/content/cq:graphql/TDTraining/endpoint.json`,
+                const res = await fetch(`https://strengtheningly-nonstrategic-ellan.ngrok-free.dev
+/content/cq:graphql/TDTraining/endpoint.json`,
                     {
                         method: "POST",
                         headers: {

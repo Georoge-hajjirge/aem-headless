@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+        {
+            "source": "/api/aem/:path*",
+            "destination": "https://strengtheningly-nonstrategic-ellan.ngrok-free.dev/:path*"
+        }
+    ]
+}

@@ -6,8 +6,7 @@ const ProfileModel = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await fetch(`https://strengtheningly-nonstrategic-ellan.ngrok-free.dev
-/content/cq:graphql/TDTraining/endpoint.json`,
+                const res = await fetch(`/api/aem/content/cq:graphql/TDTraining/endpoint.json`,
                     {
                         method: "POST",
                         headers: {
@@ -63,7 +62,7 @@ const ProfileModel = () => {
 
                     <div className="flex justify-center">
                         <img
-                            src={`https://strengtheningly-nonstrategic-ellan.ngrok-free.dev${user.profilePicture?._path}`}
+                            src={`/api/aem${user.profilePicture?._path}`}
                             alt={user.name}
                             className="w-36 h-36 rounded-full object-cover border-4 border-indigo-200 shadow-lg"
                         />

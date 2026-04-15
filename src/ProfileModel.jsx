@@ -12,7 +12,8 @@ const ProfileModel = () => {
                         method: "POST",
                         headers: {
                             "Content-type": "application/json",
-                            "Authorization": "Basic " + btoa("admin:admin")
+                            "Authorization": "Basic " + btoa("admin:admin"),
+                            "ngrok-skip-browser-warning": "true"
                         },
                         body: JSON.stringify({
                             query: `
@@ -62,7 +63,7 @@ const ProfileModel = () => {
 
                     <div className="flex justify-center">
                         <img
-                            src={`http://localhost:4502${user.profilePicture?._path}`}
+                            src={`https://strengtheningly-nonstrategic-ellan.ngrok-free.dev${user.profilePicture?._path}`}
                             alt={user.name}
                             className="w-36 h-36 rounded-full object-cover border-4 border-indigo-200 shadow-lg"
                         />

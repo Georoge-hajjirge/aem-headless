@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+const BASE_URL = "https://strengtheningly-nonstrategic-ellan.ngrok-free.dev";
+
 
 const ProfileModel = () => {
     const [profile, setProfile] = useState([]);
@@ -7,7 +9,7 @@ const ProfileModel = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await fetch(`/api/aem/content/cq:graphql/TDTraining/endpoint.json`, {
+                const res = await fetch(`${BASE_URL}/content/cq:graphql/TDTraining/endpoint.json`, {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json",
@@ -16,18 +18,18 @@ const ProfileModel = () => {
                     },
                     body: JSON.stringify({
                         query: `{
-                            profileList {
-                                items {
-                                    name
-                                    email
-                                    designation
-                                    biography { plaintext }
-                                    profilePicture {
-                                        ... on ImageRef { _path }
-                                    }
-                                }
-                            }
-                        }`
+      profileList {
+        items {
+          name
+          email
+          designation
+          biography { plaintext }
+          profilePicture {
+            ... on ImageRef { _path }
+          }
+        }
+      }
+    }`
                     })
                 });
                 const data = await res.json();
@@ -36,7 +38,7 @@ const ProfileModel = () => {
 
                 // Fetch image with auth
                 if (items[0]?.profilePicture?._path) {
-                    const imgRes = await fetch(`/api/aem${items[0].profilePicture._path}`, {
+                    const imgRes = await fetch(`${BASE_URL}${items[0].profilePicture._path}`, {
                         headers: {
                             "Authorization": "Basic " + btoa("admin:admin"),
                             "ngrok-skip-browser-warning": "true"
